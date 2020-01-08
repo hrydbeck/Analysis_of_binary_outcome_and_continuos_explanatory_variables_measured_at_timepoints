@@ -1,5 +1,10 @@
 ---
 title: "Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "Halfdan Rydbeck"
 date: "1/8/2020"
 output: html_document
