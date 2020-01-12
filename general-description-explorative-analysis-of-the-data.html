@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Analysis of binary outcome and continuos explanatory variables measured at timepoints</title>
+  <meta name="description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  
+  <meta name="twitter:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  
+
+<meta name="author" content="Halfdan Rydbeck" />
+
+
+<meta name="date" content="2020-01-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="data-analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html"><i class="fa fa-check"></i><b>1</b> General description (explorative analysis) of the data</a><ul>
+<li class="chapter" data-level="1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#initial-remarks"><i class="fa fa-check"></i><b>1.1</b> Initial remarks</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#some-reflections"><i class="fa fa-check"></i><b>1.1.1</b> Some reflections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-variationdistributions-of-variables"><i class="fa fa-check"></i><b>1.2</b> Plots of variation/distributions of variables</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#gather-data"><i class="fa fa-check"></i><b>1.2.1</b> “Gather” data</a></li>
+<li class="chapter" data-level="1.2.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#all-data-included"><i class="fa fa-check"></i><b>1.2.2</b> All data included</a></li>
+<li class="chapter" data-level="1.2.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#removing-most-common-value-from-cytokine-and-growth-factor-variables"><i class="fa fa-check"></i><b>1.2.3</b> Removing most common value from cytokine and growth factor variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#most-common-value-removed"><i class="fa fa-check"></i><b>1.2.4</b> Most common value removed</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-covariation-of-variables."><i class="fa fa-check"></i><b>1.3</b> Plots of covariation of variables.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>2</b> Data analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis.html"><a href="data-analysis.html#cox-proportional-hazards-regression"><i class="fa fa-check"></i><b>2.1</b> Cox proportional hazards regression</a></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis.html"><a href="data-analysis.html#univariate-cox-regression-with-single-variable"><i class="fa fa-check"></i><b>2.2</b> Univariate Cox regression with single variable</a></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis.html"><a href="data-analysis.html#applying-the-univariate-coxph-function-for-each-variable"><i class="fa fa-check"></i><b>2.3</b> Applying the univariate coxph function for each variable</a></li>
+<li class="chapter" data-level="2.4" data-path="data-analysis.html"><a href="data-analysis.html#multivariate-cox-regression"><i class="fa fa-check"></i><b>2.4</b> Multivariate Cox regression</a></li>
+<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-resulst-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic resulst visually</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="data-analysis.html"><a href="data-analysis.html#compute-survival-curves-survfit"><i class="fa fa-check"></i><b>2.5.1</b> Compute survival curves: survfit()</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-analysis.html"><a href="data-analysis.html#produce-the-survival-curves"><i class="fa fa-check"></i><b>2.5.2</b> Produce the survival curves</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c5"><i class="fa fa-check"></i><b>2.5.3</b> From continuous to categorical C5</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c11"><i class="fa fa-check"></i><b>2.5.4</b> From continuous to categorical C11</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="discussion-comments.html"><a href="discussion-comments.html"><i class="fa fa-check"></i><b>3</b> Discussion, comments</a><ul>
+<li class="chapter" data-level="3.1" data-path="discussion-comments.html"><a href="discussion-comments.html#assumption"><i class="fa fa-check"></i><b>3.1</b> Assumption</a></li>
+<li class="chapter" data-level="3.2" data-path="discussion-comments.html"><a href="discussion-comments.html#more-data-munging-required"><i class="fa fa-check"></i><b>3.2</b> More data munging required</a></li>
+<li class="chapter" data-level="3.3" data-path="discussion-comments.html"><a href="discussion-comments.html#other-approaches"><i class="fa fa-check"></i><b>3.3</b> Other approaches</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of binary outcome and continuos explanatory variables measured at timepoints</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Analysis of binary outcome and continuos explanatory variables measured at timepoints</h1>
+<p class="author"><em>Halfdan Rydbeck</em></p>
+<p class="date"><em>2020-01-12</em></p>
+</div>
+<div id="general-description-explorative-analysis-of-the-data" class="section level1">
+<h1><span class="header-section-number">1</span> General description (explorative analysis) of the data</h1>
+<p>Look at some descriptive statistics and remove missing values</p>
+<p>See Figure <a href="general-description-explorative-analysis-of-the-data.html#fig:logo">1.1</a> for example of wild data.</p>
+<div class="figure"><span id="fig:logo"></span>
+<img src="img/IMG_2229.png" alt="Wild data"  />
+<p class="caption">
+Figure 1.1: Wild data
+</p>
+</div>
+<p>See Tabel <a href="general-description-explorative-analysis-of-the-data.html#tab:tabl1">1.1</a> for example of what data looks like.</p>
+<table>
+<caption><span id="tab:tabl1">Table 1.1: </span>A table of the first 10 rows of the data.</caption>
+<thead>
+<tr class="header">
+<th align="right">Sample_ID</th>
+<th align="right">Time_point_num</th>
+<th align="right">sex</th>
+<th align="right">C1</th>
+<th align="right">C2</th>
+<th align="right">C3</th>
+<th align="right">C4</th>
+<th align="right">C5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">101</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-0.8860566</td>
+<td align="right">-0.7212464</td>
+<td align="right">-1.522879</td>
+<td align="right">-0.2924298</td>
+<td align="right">-0.0604807</td>
+</tr>
+<tr class="even">
+<td align="right">107</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-0.4948500</td>
+<td align="right">0.2695129</td>
+<td align="right">-1.522879</td>
+<td align="right">1.1708482</td>
+<td align="right">0.0128372</td>
+</tr>
+<tr class="odd">
+<td align="right">108</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-0.8860566</td>
+<td align="right">-0.7212464</td>
+<td align="right">-1.522879</td>
+<td align="right">-0.2924298</td>
+<td align="right">-0.2518120</td>
+</tr>
+<tr class="even">
+<td align="right">109</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">-0.2365720</td>
+<td align="right">0.5490033</td>
+<td align="right">-1.221849</td>
+<td align="right">1.5337721</td>
+<td align="right">2.3143097</td>
+</tr>
+<tr class="odd">
+<td align="right">110</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1.1702617</td>
+<td align="right">0.7972675</td>
+<td align="right">-1.221849</td>
+<td align="right">1.4206158</td>
+<td align="right">2.2331739</td>
+</tr>
+</tbody>
+</table>
+<div id="initial-remarks" class="section level2">
+<h2><span class="header-section-number">1.1</span> Initial remarks</h2>
+<ol style="list-style-type: decimal">
+<li>The data has been collected at 8 time points, a-h</li>
+<li>The activity of 17 different cytokines have been measured at each time point, with some exception of missing data.</li>
+<li>The activity of 5 different growth factors have been measured at all time points except time point a, with some exception of missing data.</li>
+<li>In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable.</li>
+<li>The distributions of cytokine measurements tend to include negative values. Could this be some calibration error?</li>
+<li>The values of many the cytokine measurements tend to be overrepresented/clustering at the minimum of the distribution. Could this be measurement errors? See Figure <a href="general-description-explorative-analysis-of-the-data.html#fig:fig1">1.2</a>. Should these be removed as in <a href="general-description-explorative-analysis-of-the-data.html#fig:fig2">1.3</a>? C3 takes specific values. Can it be considered categorical?</li>
+<li>The range of the distributions for the continuous variables varies a lot. This can be seen form the output of the summary command</li>
+<li>The precision of the measurement vary. G1 is for instance given with no decimals. Maybe it could be considered as categorical?</li>
+</ol>
+<pre><code>## Warning: Removed 34 rows containing non-finite values (stat_bin).</code></pre>
+<div class="figure"><span id="fig:fig1"></span>
+<img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/fig1-1.png" alt="Plotting histogram of C3" width="672" />
+<p class="caption">
+Figure 1.2: Plotting histogram of C3
+</p>
+</div>
+<p>Removing most common value</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C3),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">d_temp &lt;-<span class="st"> </span>d</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">d_temp &lt;-<span class="st"> </span>d_temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C3 =</span> val_to_repl))</a></code></pre></div>
+<pre><code>## Warning: Removed 541 rows containing non-finite values (stat_bin).</code></pre>
+<div class="figure"><span id="fig:fig2"></span>
+<img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/fig2-1.png" alt="Plotting histogram of C3 with most common value removed" width="672" />
+<p class="caption">
+Figure 1.3: Plotting histogram of C3 with most common value removed
+</p>
+</div>
+<p>A summary of the distribution of the variables</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">summary</span>(d)</a></code></pre></div>
+<pre><code>##    Sample_ID             Time_point_num              sex              
+##  Min.   :101.000000000   Min.   :1.0000000000   Min.   :1.0000000000  
+##  1st Qu.:125.000000000   1st Qu.:3.0000000000   1st Qu.:1.0000000000  
+##  Median :146.000000000   Median :4.0000000000   Median :1.0000000000  
+##  Mean   :146.119089317   Mean   :4.4938704028   Mean   :1.4350877193  
+##  3rd Qu.:166.500000000   3rd Qu.:6.0000000000   3rd Qu.:2.0000000000  
+##  Max.   :191.000000000   Max.   :8.0000000000   Max.   :2.0000000000  
+##                                                 NA&#39;s   :1             
+##        C1                        C2                         C3                
+##  Min.   :-1.602059991330   Min.   :-0.7212463990470   Min.   :-2.00000000000  
+##  1st Qu.:-1.602059991330   1st Qu.:-0.7212463990470   1st Qu.:-1.52287874528  
+##  Median :-1.397940008670   Median :-0.7212463990470   Median :-1.52287874528  
+##  Mean   :-0.962469694970   Mean   :-0.3660665423590   Mean   :-1.45504977058  
+##  3rd Qu.:-0.431798275933   3rd Qu.:-0.0915149811214   3rd Qu.:-1.52287874528  
+##  Max.   : 3.346372536820   Max.   : 1.9889155205100   Max.   : 1.02407498731  
+##  NA&#39;s   :34                NA&#39;s   :34                 NA&#39;s   :34              
+##        C4                        C5                         C6                 
+##  Min.   :-0.292429823902   Min.   :-1.0457574905600   Min.   :-0.677780705266  
+##  1st Qu.:-0.292429823902   1st Qu.:-0.3872161432800   1st Qu.:-0.677780705266  
+##  Median : 0.264817823010   Median : 0.0293837776852   Median :-0.677780705266  
+##  Mean   : 0.284507937351   Mean   : 0.1087980280030   Mean   :-0.516308151511  
+##  3rd Qu.: 0.692846919277   3rd Qu.: 0.4828735836090   3rd Qu.:-0.677780705266  
+##  Max.   : 2.458244918060   Max.   : 4.0023194421700   Max.   : 1.223495940960  
+##  NA&#39;s   :34                NA&#39;s   :34                 NA&#39;s   :34               
+##        C7                       C8                        C9                 
+##  Min.   :0.625312450962   Min.   :-0.677780705266   Min.   :-0.698970004336  
+##  1st Qu.:1.250175948080   1st Qu.:-0.677780705266   1st Qu.:-0.698970004336  
+##  Median :1.467756051240   Median : 0.243038048686   Median :-0.698970004336  
+##  Mean   :1.586070195890   Mean   : 0.226291568379   Mean   :-0.537861225939  
+##  3rd Qu.:1.820004306810   3rd Qu.: 0.784617292633   3rd Qu.:-0.698970004336  
+##  Max.   :5.477121254720   Max.   : 3.061742665760   Max.   : 1.642761203270  
+##  NA&#39;s   :34               NA&#39;s   :34                NA&#39;s   :34               
+##       C10                       C11                        C12                 
+##  Min.   :-1.096910013010   Min.   :-0.5086383061660   Min.   :0.0569048513365  
+##  1st Qu.:-1.096910013010   1st Qu.:-0.5086383061660   1st Qu.:0.0569048513365  
+##  Median :-1.096910013010   Median :-0.1307682802690   Median :0.0569048513365  
+##  Mean   :-1.011101323970   Mean   : 0.0192493550724   Mean   :0.6269064704060  
+##  3rd Qu.:-1.096910013010   3rd Qu.: 0.4727564493170   3rd Qu.:1.1389339402600  
+##  Max.   : 0.861534410859   Max.   : 2.4182681378000   Max.   :5.2662217214500  
+##  NA&#39;s   :34                NA&#39;s   :34                 NA&#39;s   :34               
+##       C13                      C14                       C15               
+##  Min.   :-1.22184874962   Min.   :-0.853871964322   Min.   :1.00817418401  
+##  1st Qu.:-1.22184874962   1st Qu.: 0.540329474791   1st Qu.:1.79865064545  
+##  Median :-1.22184874962   Median : 0.809559714635   Median :2.07514532705  
+##  Mean   :-1.08507604021   Mean   : 0.821068280087   Mean   :2.10159935138  
+##  3rd Qu.:-1.22184874962   3rd Qu.: 1.048441803550   3rd Qu.:2.33968988997  
+##  Max.   : 1.98412208286   Max.   : 2.350131673870   Max.   :4.01744780917  
+##  NA&#39;s   :34               NA&#39;s   :34                NA&#39;s   :34             
+##       C16                      C17                       G1                
+##  Min.   :0.748188027006   Min.   :0.705007959333   Min.   :  2.0000000000  
+##  1st Qu.:1.407390904470   1st Qu.:1.466719371680   1st Qu.: 16.0000000000  
+##  Median :1.603036056250   Median :1.612041744650   Median : 26.0000000000  
+##  Mean   :1.625727222330   Mean   :1.631432822070   Mean   : 28.7791411043  
+##  3rd Qu.:1.832891944760   3rd Qu.:1.756712160160   3rd Qu.: 38.0000000000  
+##  Max.   :2.925301775590   Max.   :3.116697382680   Max.   :134.0000000000  
+##  NA&#39;s   :34               NA&#39;s   :34               NA&#39;s   :82              
+##        G2                       G3                       G4               
+##  Min.   :   53.56000000   Min.   :  1.3000000000   Min.   :   6.95000000  
+##  1st Qu.: 2285.98500000   1st Qu.:  6.0025000000   1st Qu.: 465.03000000  
+##  Median : 6106.49000000   Median :  8.9750000000   Median : 887.35000000  
+##  Mean   : 8553.75762745   Mean   : 15.1151568627   Mean   :1000.38770138  
+##  3rd Qu.:12612.83500000   3rd Qu.: 15.3725000000   3rd Qu.:1426.96000000  
+##  Max.   :38221.67000000   Max.   :593.6600000000   Max.   :4970.20000000  
+##  NA&#39;s   :61               NA&#39;s   :61               NA&#39;s   :62             
+##        G5                    outcome              
+##  Min.   :  65.710000000   Min.   :0.000000000000  
+##  1st Qu.: 309.442500000   1st Qu.:0.000000000000  
+##  Median : 531.235000000   Median :1.000000000000  
+##  Mean   : 646.584901961   Mean   :0.511111111111  
+##  3rd Qu.: 870.237500000   3rd Qu.:1.000000000000  
+##  Max.   :2426.280000000   Max.   :1.000000000000  
+##  NA&#39;s   :61               NA&#39;s   :31</code></pre>
+<p>Omitting missing values</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">d &lt;-<span class="st"> </span><span class="kw">na.omit</span>(d)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#summary(d)</span></a></code></pre></div>
+<div id="some-reflections" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Some reflections</h3>
+<ol style="list-style-type: decimal">
+<li>There are alternatve ways to deal with missing values. Rows with missing values can either be removed, as done wiht na.omit() in this case and automatically by most fuctions, or one can use methods for imputing those missing values like replacing with sample average.</li>
+</ol>
+</div>
+</div>
+<div id="plots-of-variationdistributions-of-variables" class="section level2">
+<h2><span class="header-section-number">1.2</span> Plots of variation/distributions of variables</h2>
+<div id="gather-data" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> “Gather” data</h3>
+<p>Here the format of the data frame is first changed from wide to long in ordeer to use the “facets” function of the tidyverse package. Cytokines and growth factors are “gathered” into two variables (making the data “longer”)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">d_long &lt;-<span class="st"> </span><span class="kw">gather</span>(d, <span class="st">&quot;ck&quot;</span>, <span class="st">&quot;ck_value&quot;</span>,<span class="kw">c</span>(C1<span class="op">:</span>C17))</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#G1 cannot be included since missing data</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">d_long &lt;-<span class="st"> </span><span class="kw">gather</span>(d_long, <span class="st">&quot;gf&quot;</span>, <span class="st">&quot;gf_value&quot;</span>,<span class="kw">c</span>(G1<span class="op">:</span>G5))</a></code></pre></div>
+</div>
+<div id="all-data-included" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> All data included</h3>
+Plot the distrubution of the measurements of cytokines (C1-C17) and of growth factors. It can be seen that one specific low value is over represented.
+<code>{r fig3, echo=FALSE, fig.cap=&quot;All data included ck&quot;}#r All data included ck ggplot(data = d_long) +   geom_histogram(mapping = aes(x = ck_value),binwidth = 0.05) +   facet_wrap( ~ ck)</code>
+Plot the distrubution of the measurements of growth factors
+<div class="figure"><span id="fig:fig4"></span>
+<img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/fig4-1.png" alt="Histograms of growth facors. All data included gf" width="672" />
+<p class="caption">
+Figure 1.4: Histograms of growth facors. All data included gf
+</p>
+</div>
+</div>
+<div id="removing-most-common-value-from-cytokine-and-growth-factor-variables" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Removing most common value from cytokine and growth factor variables</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">d_test &lt;-<span class="st"> </span>d</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">d_test &lt;-<span class="st"> </span><span class="kw">na.omit</span>(d_test)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#C1</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C1),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C1 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#C2</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C2),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C2 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#C3</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C3),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C3 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#C4</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C4),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C4 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#C5</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C5),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C5 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#C6</span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C6),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-22" data-line-number="22">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C6 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#C7</span></a>
+<a class="sourceLine" id="cb10-24" data-line-number="24">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C7),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-25" data-line-number="25">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C7 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#C8</span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C8),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-28" data-line-number="28">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C8 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#C9</span></a>
+<a class="sourceLine" id="cb10-30" data-line-number="30">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C9),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-31" data-line-number="31">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C9 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#C10</span></a>
+<a class="sourceLine" id="cb10-33" data-line-number="33">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C10),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-34" data-line-number="34">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C10 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb10-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#C11</span></a>
+<a class="sourceLine" id="cb10-38" data-line-number="38">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C11),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-39" data-line-number="39">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C11 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#C12</span></a>
+<a class="sourceLine" id="cb10-41" data-line-number="41">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C12),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-42" data-line-number="42">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C12 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#C13</span></a>
+<a class="sourceLine" id="cb10-44" data-line-number="44">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>C13),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-45" data-line-number="45">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">C13 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb10-47" data-line-number="47"><span class="co">#G1</span></a>
+<a class="sourceLine" id="cb10-48" data-line-number="48">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>G1),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-49" data-line-number="49">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">G1 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-50" data-line-number="50"><span class="co">#G2</span></a>
+<a class="sourceLine" id="cb10-51" data-line-number="51">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>G2),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-52" data-line-number="52">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">G2 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-53" data-line-number="53"><span class="co">#G3</span></a>
+<a class="sourceLine" id="cb10-54" data-line-number="54">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>G3),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-55" data-line-number="55">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">G3 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-56" data-line-number="56"><span class="co">#G4</span></a>
+<a class="sourceLine" id="cb10-57" data-line-number="57">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>G4),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-58" data-line-number="58">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">G4 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-59" data-line-number="59"><span class="co">#G5</span></a>
+<a class="sourceLine" id="cb10-60" data-line-number="60">val_to_repl &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(d<span class="op">$</span>G5),<span class="dt">decreasing=</span><span class="ot">TRUE</span>),<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb10-61" data-line-number="61">d_test &lt;-<span class="st"> </span>d_test <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">G5 =</span> val_to_repl))</a>
+<a class="sourceLine" id="cb10-62" data-line-number="62"></a>
+<a class="sourceLine" id="cb10-63" data-line-number="63">d_test_long &lt;-<span class="st"> </span><span class="kw">gather</span>(d_test, <span class="st">&quot;ck_low&quot;</span>, <span class="st">&quot;ck_low_value&quot;</span>,<span class="kw">c</span>(C1<span class="op">:</span>C12))</a>
+<a class="sourceLine" id="cb10-64" data-line-number="64">d_test_long &lt;-<span class="st"> </span><span class="kw">gather</span>(d_test_long, <span class="st">&quot;ck_high&quot;</span>, <span class="st">&quot;ck_high_value&quot;</span>,<span class="kw">c</span>(C13<span class="op">:</span>C17))</a>
+<a class="sourceLine" id="cb10-65" data-line-number="65">d_test_long &lt;-<span class="st"> </span><span class="kw">gather</span>(d_test_long, <span class="st">&quot;gf&quot;</span>, <span class="st">&quot;gf_value&quot;</span>,<span class="kw">c</span>(G1<span class="op">:</span>G5))</a></code></pre></div>
+</div>
+<div id="most-common-value-removed" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> Most common value removed</h3>
+<p>Plot the distrubution of the measurements of cytokines (C1-C12 and C13-C17)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">#Histograms of Cytokines, low count values</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_test_long) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> ck_low_value),<span class="dt">binwidth =</span> <span class="fl">0.05</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>ck_low)</a></code></pre></div>
+<pre><code>## Warning: Removed 76025 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20with%20most%20common%20value%20removed%20ck-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#Histograms of cytokine, high count values</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_test_long) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> ck_high_value),<span class="dt">binwidth =</span> <span class="fl">0.05</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>ck_high)</a></code></pre></div>
+<pre><code>## Warning: Removed 25320 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20with%20most%20common%20value%20removed%20ck-2.png" width="672" />
+Plot the distrubution of the measurements of growth factors (G1-G5). The filtering strategy has not been working for this data set. Would have to look further into this.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">#Histograms of growth factors, low count values</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_test_long) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gf_value),<span class="dt">binwidth =</span> <span class="dv">100</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>gf)</a></code></pre></div>
+<pre><code>## Warning: Removed 1440 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20with%20most%20common%20value%20removed%20gf-1.png" width="672" /></p>
+</div>
+</div>
+<div id="plots-of-covariation-of-variables." class="section level2">
+<h2><span class="header-section-number">1.3</span> Plots of covariation of variables.</h2>
+<p>These plots indicate correlation betwwen varialbes. The dot plot cloud is streched out from lower left to upper right. The cloud is not symmetric.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d, <span class="st">&quot;ck_low&quot;</span>, <span class="st">&quot;ck_low_val&quot;</span>,<span class="kw">c</span>(C2<span class="op">:</span>C13))</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d_long2, <span class="st">&quot;ck_high&quot;</span>, <span class="st">&quot;ck_high_val&quot;</span>,<span class="kw">c</span>(C14<span class="op">:</span>C17))</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d_long2, <span class="st">&quot;gf&quot;</span>, <span class="st">&quot;gf_val&quot;</span>,<span class="kw">c</span>(G3<span class="op">:</span>G5))</a></code></pre></div>
+<p>Plot covariation ck1</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_long2) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> C1, <span class="dt">y =</span> ck_high_val, <span class="dt">color =</span> <span class="kw">as.factor</span>(Time_point_num))) <span class="op">+</span><span class="co">#</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st">  </span>ck_high)</a></code></pre></div>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20covariation%20ck%20high%20count-1.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_long2) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> C1, <span class="dt">y =</span> ck_low_val, <span class="dt">color =</span> <span class="kw">as.factor</span>(Time_point_num))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st">  </span>ck_low)</a></code></pre></div>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20covariation%20ck%20low%20count-1.png" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> d_long2) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> G1, <span class="dt">y =</span> gf_val, <span class="dt">color =</span> <span class="kw">as.factor</span>(Time_point_num))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st">  </span>gf)</a></code></pre></div>
+<p><img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/Plot%20covariation%20gfs-1.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="data-analysis.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>

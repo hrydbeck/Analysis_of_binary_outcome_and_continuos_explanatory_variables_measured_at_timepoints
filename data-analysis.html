@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Data analysis | Analysis of binary outcome and continuos explanatory variables measured at timepoints</title>
+  <meta name="description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Data analysis | Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Data analysis | Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  
+  <meta name="twitter:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  
+
+<meta name="author" content="Halfdan Rydbeck" />
+
+
+<meta name="date" content="2020-01-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="general-description-explorative-analysis-of-the-data.html"/>
+<link rel="next" href="discussion-comments.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html"><i class="fa fa-check"></i><b>1</b> General description (explorative analysis) of the data</a><ul>
+<li class="chapter" data-level="1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#initial-remarks"><i class="fa fa-check"></i><b>1.1</b> Initial remarks</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#some-reflections"><i class="fa fa-check"></i><b>1.1.1</b> Some reflections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-variationdistributions-of-variables"><i class="fa fa-check"></i><b>1.2</b> Plots of variation/distributions of variables</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#gather-data"><i class="fa fa-check"></i><b>1.2.1</b> “Gather” data</a></li>
+<li class="chapter" data-level="1.2.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#all-data-included"><i class="fa fa-check"></i><b>1.2.2</b> All data included</a></li>
+<li class="chapter" data-level="1.2.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#removing-most-common-value-from-cytokine-and-growth-factor-variables"><i class="fa fa-check"></i><b>1.2.3</b> Removing most common value from cytokine and growth factor variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#most-common-value-removed"><i class="fa fa-check"></i><b>1.2.4</b> Most common value removed</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-covariation-of-variables."><i class="fa fa-check"></i><b>1.3</b> Plots of covariation of variables.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>2</b> Data analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis.html"><a href="data-analysis.html#cox-proportional-hazards-regression"><i class="fa fa-check"></i><b>2.1</b> Cox proportional hazards regression</a></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis.html"><a href="data-analysis.html#univariate-cox-regression-with-single-variable"><i class="fa fa-check"></i><b>2.2</b> Univariate Cox regression with single variable</a></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis.html"><a href="data-analysis.html#applying-the-univariate-coxph-function-for-each-variable"><i class="fa fa-check"></i><b>2.3</b> Applying the univariate coxph function for each variable</a></li>
+<li class="chapter" data-level="2.4" data-path="data-analysis.html"><a href="data-analysis.html#multivariate-cox-regression"><i class="fa fa-check"></i><b>2.4</b> Multivariate Cox regression</a></li>
+<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-resulst-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic resulst visually</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="data-analysis.html"><a href="data-analysis.html#compute-survival-curves-survfit"><i class="fa fa-check"></i><b>2.5.1</b> Compute survival curves: survfit()</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-analysis.html"><a href="data-analysis.html#produce-the-survival-curves"><i class="fa fa-check"></i><b>2.5.2</b> Produce the survival curves</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c5"><i class="fa fa-check"></i><b>2.5.3</b> From continuous to categorical C5</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c11"><i class="fa fa-check"></i><b>2.5.4</b> From continuous to categorical C11</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="discussion-comments.html"><a href="discussion-comments.html"><i class="fa fa-check"></i><b>3</b> Discussion, comments</a><ul>
+<li class="chapter" data-level="3.1" data-path="discussion-comments.html"><a href="discussion-comments.html#assumption"><i class="fa fa-check"></i><b>3.1</b> Assumption</a></li>
+<li class="chapter" data-level="3.2" data-path="discussion-comments.html"><a href="discussion-comments.html#more-data-munging-required"><i class="fa fa-check"></i><b>3.2</b> More data munging required</a></li>
+<li class="chapter" data-level="3.3" data-path="discussion-comments.html"><a href="discussion-comments.html#other-approaches"><i class="fa fa-check"></i><b>3.3</b> Other approaches</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of binary outcome and continuos explanatory variables measured at timepoints</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-analysis" class="section level1">
+<h1><span class="header-section-number">2</span> Data analysis</h1>
+<p>The data to be analysed is made up by continuos variables measured over time and a binary one, and finally binary outcome variable. This limits the number of research question that can be asked. I suggest that the most relevant question involving all variables is weather any of the variables effect the time to outcome? What is needed is a survival analysis. Since the indepent variables are continuos this requires a Cox proportional hazards regression.</p>
+<div id="cox-proportional-hazards-regression" class="section level2">
+<h2><span class="header-section-number">2.1</span> Cox proportional hazards regression</h2>
+<p>For this analyis the coxph function of the “survival” package will be used. It is called as coxph(formula, data, method)</p>
+<ul>
+<li>formula: is linear model with a survival object as the response variable. Survival object is created using the function Surv() as follow: Surv(time, event).</li>
+<li>data: a data frame containing the variables</li>
+<li>method: is used to specify how to handle ties. The default is ‘efron’. Other options are ‘breslow’ and ‘exact’. The default ‘efron’ is generally preferred to the once-popular “breslow” method. The “exact” method is much more computationally intensive.</li>
+</ul>
+</div>
+<div id="univariate-cox-regression-with-single-variable" class="section level2">
+<h2><span class="header-section-number">2.2</span> Univariate Cox regression with single variable</h2>
+<p>An initial look at the effect of the sex variable</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">res.cox &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">res.cox</a></code></pre></div>
+<pre><code>## Call:
+## coxph(formula = Surv(Time_point_num, outcome) ~ sex, data = d)
+## 
+##                 coef        exp(coef)         se(coef)       z       p
+## sex 0.00357470826085 1.00358110515049 0.12886532365286 0.02774 0.97787
+## 
+## Likelihood ratio test=0  on 1 df, p=0.977870495233
+## n= 464, number of events= 242</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">summary</span>(res.cox)</a></code></pre></div>
+<pre><code>## Call:
+## coxph(formula = Surv(Time_point_num, outcome) ~ sex, data = d)
+## 
+##   n= 464, number of events= 242 
+## 
+##                 coef        exp(coef)         se(coef)       z Pr(&gt;|z|)
+## sex 0.00357470826085 1.00358110515049 0.12886532365286 0.02774  0.97787
+## 
+##         exp(coef)     exp(-coef)      lower .95     upper .95
+## sex 1.00358110515 0.996431673402 0.779582557732 1.29194146871
+## 
+## Concordance= 0.502  (se = 0.02 )
+## Likelihood ratio test= 0  on 1 df,   p=0.9778705
+## Wald test            = 0  on 1 df,   p=0.97786962
+## Score (logrank) test = 0  on 1 df,   p=0.97786961</code></pre>
+</div>
+<div id="applying-the-univariate-coxph-function-for-each-variable" class="section level2">
+<h2><span class="header-section-number">2.3</span> Applying the univariate coxph function for each variable</h2>
+<p>Univariate regression is performed at each variable one by one to single out signficant ones</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">covariates &lt;-<span class="st"> </span><span class="kw">names</span>(d)[<span class="dv">3</span><span class="op">:</span><span class="dv">25</span>]</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">univ_formulas &lt;-<span class="st"> </span><span class="kw">sapply</span>(covariates,</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">                        <span class="cf">function</span>(x) <span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&#39;Surv(Time_point_num, outcome)~&#39;</span>, x)))</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">univ_models &lt;-<span class="st"> </span><span class="kw">lapply</span>( univ_formulas, <span class="cf">function</span>(x){<span class="kw">coxph</span>(x, <span class="dt">data =</span> d)})</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co"># Extract data </span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">univ_results &lt;-<span class="st"> </span><span class="kw">lapply</span>(univ_models,</a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">                       <span class="cf">function</span>(x){ </a>
+<a class="sourceLine" id="cb25-9" data-line-number="9">                         x &lt;-<span class="st"> </span><span class="kw">summary</span>(x)</a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">                         p.value&lt;-<span class="kw">signif</span>(x<span class="op">$</span>wald[<span class="st">&quot;pvalue&quot;</span>], <span class="dt">digits=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb25-11" data-line-number="11">                         wald.test&lt;-<span class="kw">signif</span>(x<span class="op">$</span>wald[<span class="st">&quot;test&quot;</span>], <span class="dt">digits=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb25-12" data-line-number="12">                         beta&lt;-<span class="kw">signif</span>(x<span class="op">$</span>coef[<span class="dv">1</span>], <span class="dt">digits=</span><span class="dv">2</span>);<span class="co">#coeficient beta</span></a>
+<a class="sourceLine" id="cb25-13" data-line-number="13">                         HR &lt;-<span class="kw">signif</span>(x<span class="op">$</span>coef[<span class="dv">2</span>], <span class="dt">digits=</span><span class="dv">2</span>);<span class="co">#exp(beta)</span></a>
+<a class="sourceLine" id="cb25-14" data-line-number="14">                         HR.confint.lower &lt;-<span class="st"> </span><span class="kw">signif</span>(x<span class="op">$</span>conf.int[,<span class="st">&quot;lower .95&quot;</span>], <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb25-15" data-line-number="15">                         HR.confint.upper &lt;-<span class="st"> </span><span class="kw">signif</span>(x<span class="op">$</span>conf.int[,<span class="st">&quot;upper .95&quot;</span>],<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb25-16" data-line-number="16">                         HR &lt;-<span class="st"> </span><span class="kw">paste0</span>(HR, <span class="st">&quot; (&quot;</span>, </a>
+<a class="sourceLine" id="cb25-17" data-line-number="17">                                      HR.confint.lower, <span class="st">&quot;-&quot;</span>, HR.confint.upper, <span class="st">&quot;)&quot;</span>)</a>
+<a class="sourceLine" id="cb25-18" data-line-number="18">                         res&lt;-<span class="kw">c</span>(beta, HR, wald.test, p.value)</a>
+<a class="sourceLine" id="cb25-19" data-line-number="19">                         <span class="kw">names</span>(res)&lt;-<span class="kw">c</span>(<span class="st">&quot;beta&quot;</span>, <span class="st">&quot;HR (95% CI for HR)&quot;</span>, <span class="st">&quot;wald.test&quot;</span>, </a>
+<a class="sourceLine" id="cb25-20" data-line-number="20">                                       <span class="st">&quot;p.value&quot;</span>)</a>
+<a class="sourceLine" id="cb25-21" data-line-number="21">                         <span class="kw">return</span>(res)</a>
+<a class="sourceLine" id="cb25-22" data-line-number="22">                         <span class="co">#return(exp(cbind(coef(x),confint(x))))</span></a>
+<a class="sourceLine" id="cb25-23" data-line-number="23">                       })</a>
+<a class="sourceLine" id="cb25-24" data-line-number="24">res &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">as.data.frame</span>(univ_results, <span class="dt">check.names =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
+</div>
+<div id="multivariate-cox-regression" class="section level2">
+<h2><span class="header-section-number">2.4</span> Multivariate Cox regression</h2>
+<p>Multivariate Cox regression i performed for those variable selected as significant.
+According to this multivariate cox analysis C5, G1 and G2 has significant effect on time to outcome.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">res_filt &lt;-<span class="st"> </span>res[<span class="kw">as.numeric</span>(res[,<span class="dv">4</span>]) <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.001</span>, ] </a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">rownames</span>(res_filt)</a></code></pre></div>
+<pre><code>##  [1] &quot;C1&quot;  &quot;C3&quot;  &quot;C4&quot;  &quot;C5&quot;  &quot;C7&quot;  &quot;C8&quot;  &quot;C12&quot; &quot;C13&quot; &quot;G1&quot;  &quot;G2&quot;  &quot;G4&quot;</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">ind_var &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">rownames</span>(res_filt),<span class="dt">sep=</span><span class="st">&quot;&quot;</span>,<span class="dt">collapse=</span><span class="st">&quot; + &quot;</span>) <span class="co"># havent figure out how to use tis as input</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">res.cox &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(time, status) <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>ph.ecog, <span class="dt">data =</span>  lung)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">res.cox &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>C1 <span class="op">+</span><span class="st"> </span>C2 <span class="op">+</span><span class="st"> </span>C3 <span class="op">+</span><span class="st"> </span>C4 <span class="op">+</span><span class="st"> </span>C5 <span class="op">+</span><span class="st"> </span>C7 <span class="op">+</span><span class="st"> </span>C8 <span class="op">+</span><span class="st"> </span>C9 <span class="op">+</span><span class="st"> </span>C12 <span class="op">+</span><span class="st"> </span>C13 <span class="op">+</span><span class="st"> </span>G1 <span class="op">+</span><span class="st"> </span>G2 <span class="op">+</span><span class="st"> </span>G4 , <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">res.cox</a></code></pre></div>
+<pre><code>## Call:
+## coxph(formula = Surv(Time_point_num, outcome) ~ C1 + C2 + C3 + 
+##     C4 + C5 + C7 + C8 + C9 + C12 + C13 + G1 + G2 + G4, data = d)
+## 
+##                   coef          exp(coef)           se(coef)        z
+## C1  -2.69562828099e-02  9.73403795073e-01  1.26819703700e-01 -0.21256
+## C2  -3.44976121437e-01  7.08237264954e-01  2.21341418281e-01 -1.55857
+## C3  -8.43977645264e-01  4.29996742775e-01  4.03797603556e-01 -2.09010
+## C4  -7.58004829738e-02  9.27001140621e-01  1.76832010531e-01 -0.42866
+## C5   6.34015055366e-01  1.88516444414e+00  1.51058836664e-01  4.19714
+## C7   1.52324480533e-01  1.16453804506e+00  2.26251724527e-01  0.67325
+## C8  -8.62440071744e-02  9.17370358959e-01  1.14662243536e-01 -0.75216
+## C9   5.46376564294e-01  1.72698405145e+00  2.26169948164e-01  2.41578
+## C12  1.08989046474e-01  1.11515013545e+00  1.23689654610e-01  0.88115
+## C13  2.96683703569e-01  1.34538969018e+00  3.94550536536e-01  0.75195
+## G1  -3.54401499126e-02  9.65180498639e-01  6.22535617857e-03 -5.69287
+## G2  -6.98465376857e-05  9.99930155902e-01  1.54583668968e-05 -4.51836
+## G4   3.30177167577e-04  1.00033023168e+00  1.42402529754e-04  2.31862
+##              p
+## C1    0.831673
+## C2    0.119098
+## C3    0.036609
+## C4    0.668172
+## C5  2.7031e-05
+## C7    0.500787
+## C8    0.451957
+## C9    0.015702
+## C12   0.378237
+## C13   0.452079
+## G1  1.2492e-08
+## G2  6.2319e-06
+## G4    0.020416
+## 
+## Likelihood ratio test=201.79  on 13 df, p=&lt; 2.220446049e-16
+## n= 464, number of events= 242</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">summary</span>(res.cox)</a></code></pre></div>
+<pre><code>## Call:
+## coxph(formula = Surv(Time_point_num, outcome) ~ C1 + C2 + C3 + 
+##     C4 + C5 + C7 + C8 + C9 + C12 + C13 + G1 + G2 + G4, data = d)
+## 
+##   n= 464, number of events= 242 
+## 
+##                   coef          exp(coef)           se(coef)        z
+## C1  -2.69562828099e-02  9.73403795073e-01  1.26819703700e-01 -0.21256
+## C2  -3.44976121437e-01  7.08237264954e-01  2.21341418281e-01 -1.55857
+## C3  -8.43977645264e-01  4.29996742775e-01  4.03797603556e-01 -2.09010
+## C4  -7.58004829738e-02  9.27001140621e-01  1.76832010531e-01 -0.42866
+## C5   6.34015055366e-01  1.88516444414e+00  1.51058836664e-01  4.19714
+## C7   1.52324480533e-01  1.16453804506e+00  2.26251724527e-01  0.67325
+## C8  -8.62440071744e-02  9.17370358959e-01  1.14662243536e-01 -0.75216
+## C9   5.46376564294e-01  1.72698405145e+00  2.26169948164e-01  2.41578
+## C12  1.08989046474e-01  1.11515013545e+00  1.23689654610e-01  0.88115
+## C13  2.96683703569e-01  1.34538969018e+00  3.94550536536e-01  0.75195
+## G1  -3.54401499126e-02  9.65180498639e-01  6.22535617857e-03 -5.69287
+## G2  -6.98465376857e-05  9.99930155902e-01  1.54583668968e-05 -4.51836
+## G4   3.30177167577e-04  1.00033023168e+00  1.42402529754e-04  2.31862
+##       Pr(&gt;|z|)    
+## C1    0.831673    
+## C2    0.119098    
+## C3    0.036609 *  
+## C4    0.668172    
+## C5  2.7031e-05 ***
+## C7    0.500787    
+## C8    0.451957    
+## C9    0.015702 *  
+## C12   0.378237    
+## C13   0.452079    
+## G1  1.2492e-08 ***
+## G2  6.2319e-06 ***
+## G4    0.020416 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##          exp(coef)     exp(-coef)      lower .95      upper .95
+## C1  0.973403795073 1.027322890112 0.759178512739 1.248079249298
+## C2  0.708237264954 1.411956203779 0.458957654323 1.092911336690
+## C3  0.429996742775 2.325599011624 0.194873157724 0.948807937209
+## C4  0.927001140621 1.078747324227 0.655481725471 1.310991720013
+## C5  1.885164444140 0.530457702567 1.402063634502 2.534724454723
+## C7  1.164538045058 0.858709600982 0.747425420217 1.814426993926
+## C8  0.917370358959 1.090072281314 0.732730087422 1.148538035960
+## C9  1.726984051453 0.579044142972 1.108592964298 2.690323689599
+## C12 1.115150135448 0.896740239912 0.875081528250 1.421078818882
+## C13 1.345389690184 0.743279071704 0.620877711635 2.915346105257
+## G1  0.965180498639 1.036075637055 0.953475428744 0.977029262495
+## G2  0.999930155902 1.000069848977 0.999899860634 0.999960452087
+## G4  1.000330231682 0.999669877335 1.000051074642 1.000609466647
+## 
+## Concordance= 0.835  (se = 0.012 )
+## Likelihood ratio test= 201.79  on 13 df,   p=&lt; 2.22045e-16
+## Wald test            = 179.93  on 13 df,   p=&lt; 2.22045e-16
+## Score (logrank) test = 196.36  on 13 df,   p=&lt; 2.22045e-16</code></pre>
+</div>
+<div id="verifying-the-analytic-resulst-visually" class="section level2">
+<h2><span class="header-section-number">2.5</span> Verifying the analytic resulst visually</h2>
+<p>It would be great to be able to display visual proofs/indications that the above performes multivariate cox regression is according to expectations. It would for instance be great if one could crete survival plots for C5 that is found significant an for another variable that is not found significant. That is what I attempt in the following sections.</p>
+<div id="compute-survival-curves-survfit" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Compute survival curves: survfit()</h3>
+<p>Below a survival plot data is created for the sex variable</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">fit &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">print</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ sex, data = d)
+## 
+##         n events median 0.95LCL 0.95UCL
+## sex=1 248    129      7       6       7
+## sex=2 216    113      7       6       7</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># Summary of survival curves</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">summary</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ sex, data = d)
+## 
+##                 sex=1 
+##  time n.risk n.event      survival        std.err  lower 95% CI  upper 95% CI
+##     2    248      20 0.91935483871 0.017290394412 0.88608327107 0.95387572145
+##     3    208      19 0.83537531017 0.024168489544 0.78932393523 0.88411345166
+##     4    168      17 0.75084328474 0.029149312955 0.69583115470 0.81020465156
+##     5    131      19 0.64194235031 0.033981369005 0.57867866977 0.71212229282
+##     6     93      17 0.52459804972 0.037856013197 0.45540974198 0.60429781887
+##     7     65      18 0.37932474364 0.039963128243 0.30855617941 0.46632435433
+##     8     35      19 0.17340559709 0.036796282577 0.11440369047 0.26283681041
+## 
+##                 sex=2 
+##  time n.risk n.event      survival        std.err  lower 95% CI  upper 95% CI
+##     2    216      17 0.92129629630 0.018321894250 0.88607689264 0.95791558567
+##     3    183      17 0.83571139445 0.025827559034 0.78659293865 0.88789703099
+##     4    150      17 0.74099743642 0.031501036303 0.68175873163 0.80538345209
+##     5    117      17 0.63333114224 0.036162228201 0.56627651777 0.70832592054
+##     6     83      15 0.51887370689 0.039915935701 0.44625223094 0.60331333949
+##     7     57      15 0.38232799455 0.042201091495 0.30795061747 0.47466927204
+##     8     28      15 0.17750942604 0.041016731777 0.11285896409 0.27919444936</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># Access to the sort summary table</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">summary</span>(fit)<span class="op">$</span>table</a></code></pre></div>
+<pre><code>##       records n.max n.start events           *rmean        *se(rmean) median
+## sex=1     248   248     248    129 6.05143857729295 0.141384553386541      7
+## sex=2     216   216     216    113 6.03253797084803 0.150852580669213      7
+##       0.95LCL 0.95UCL
+## sex=1       6       7
+## sex=2       6       7</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># Convert list to data frame</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">data_f &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> fit<span class="op">$</span>time,</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">                     <span class="dt">n.risk =</span> fit<span class="op">$</span>n.risk,</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">                     <span class="dt">n.event =</span> fit<span class="op">$</span>n.event,</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">                     <span class="dt">n.censor =</span> fit<span class="op">$</span>n.censor,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">                     <span class="dt">surv =</span> fit<span class="op">$</span>surv,</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">                     <span class="dt">upper =</span> fit<span class="op">$</span>upper,</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">                     <span class="dt">lower =</span> fit<span class="op">$</span>lower</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">)</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="kw">head</span>(data_f)</a></code></pre></div>
+<pre><code>##   time n.risk n.event n.censor              surv             upper
+## 1    2    248      20       20 0.919354838709677 0.953875721454540
+## 2    3    208      19       21 0.835375310173697 0.884113451655536
+## 3    4    168      17       20 0.750843284739454 0.810204651564702
+## 4    5    131      19       19 0.641942350311594 0.712122292822424
+## 5    6     93      17       11 0.524598049717002 0.604297818865863
+## 6    7     65      18       12 0.379324743641524 0.466324354329615
+##               lower
+## 1 0.886083271068115
+## 2 0.789323935226917
+## 3 0.695831154695995
+## 4 0.578678669769341
+## 5 0.455409741976860
+## 6 0.308556179411988</code></pre>
+</div>
+<div id="produce-the-survival-curves" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Produce the survival curves</h3>
+<p>Here the survival plot for the sex variable is plotted. The plot indicates that the sex variable makes now diffenece in time to outcome
+#<code>{r} # Change color, linetype by strata, risk.table color by strata #ggsurvplot(fit, #           pval = TRUE, conf.int = TRUE, #           risk.table = TRUE, # Add risk table #           risk.table.col = &quot;strata&quot;, # Change risk table color by groups #           linetype = &quot;strata&quot;, # Change line type by groups #           surv.median.line = &quot;hv&quot;, # Specify median survival #           ggtheme = theme_bw(), # Change ggplot2 theme #           palette = c(&quot;#E7B800&quot;, &quot;#2E9FDF&quot;)) #</code></p>
+</div>
+<div id="from-continuous-to-categorical-c5" class="section level3">
+<h3><span class="header-section-number">2.5.3</span> From continuous to categorical C5</h3>
+<p>Here an attempt is made to turn C5 into a categoricla variable so that it can be used for a survivla plot.
+A method adapted forbinning skewed distribution would however be needed.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="co">#mydata$Agecat2&lt;-cut(mydata$Age, seq(0,30,5))</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="co">#https://www.r-bloggers.com/from-continuous-to-categorical/</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">mi &lt;-<span class="st"> </span><span class="kw">min</span>(d<span class="op">$</span>C5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">ma &lt;-<span class="st"> </span><span class="kw">max</span>(d<span class="op">$</span>C5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">d<span class="op">$</span>C5_cat &lt;-<span class="st"> </span><span class="kw">cut</span>(d<span class="op">$</span>C5, <span class="kw">seq</span>(mi,ma,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="kw">min</span>(d<span class="op">$</span>C5)</a></code></pre></div>
+<pre><code>## [1] -1.04575749056068</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">max</span>(d<span class="op">$</span>C5)</a></code></pre></div>
+<pre><code>## [1] 3.70148940777317</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">head</span>(d)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 27
+##   Sample_ID Time_point_num   sex     C1     C2      C3     C4    C5       C6
+##       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1       101              2     1 -0.569  0.230 -1.52    0.535 0.611  0.487  
+## 2       104              2     2 -1.60  -0.721 -1.52   -0.292 0.391 -0.00436
+## 3       107              2     1  0.299  0.770 -0.553   1.41  0.876  0.839  
+## 4       110              2     2 -0.387  0.439 -1.52   -0.292 1.68  -0.678  
+## 5       111              2     2  0.143  0.980 -0.0969  1.68  2.29  -0.678  
+## 6       112              2     1  0.316  0.377 -1.52    0.962 1.49  -0.678  
+## # … with 18 more variables: C7 &lt;dbl&gt;, C8 &lt;dbl&gt;, C9 &lt;dbl&gt;, C10 &lt;dbl&gt;, C11 &lt;dbl&gt;,
+## #   C12 &lt;dbl&gt;, C13 &lt;dbl&gt;, C14 &lt;dbl&gt;, C15 &lt;dbl&gt;, C16 &lt;dbl&gt;, C17 &lt;dbl&gt;, G1 &lt;dbl&gt;,
+## #   G2 &lt;dbl&gt;, G3 &lt;dbl&gt;, G4 &lt;dbl&gt;, G5 &lt;dbl&gt;, outcome &lt;dbl&gt;, C5_cat &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">fit &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>d<span class="op">$</span>C5_cat, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">print</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ d$C5_cat, data = d)
+## 
+##    66 observations deleted due to missingness 
+##                            n events median 0.95LCL 0.95UCL
+## d$C5_cat=(-1.05,-0.0458] 158     83      7       7       8
+## d$C5_cat=(-0.0458,0.954] 197    109      5       5       6
+## d$C5_cat=(0.954,1.95]     35     19      4       3      NA
+## d$C5_cat=(1.95,2.95]       8      2     NA      NA      NA</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co"># Summary of survival curves</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">summary</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ d$C5_cat, data = d)
+## 
+## 66 observations deleted due to missingness 
+##                 d$C5_cat=(-1.05,-0.0458] 
+##  time n.risk n.event      survival         std.err  lower 95% CI  upper 95% CI
+##     2    158       2 0.98734177215 0.0088938882143 0.97006304990 1.00000000000
+##     3    155       6 0.94912209065 0.0175250961650 0.91538763700 0.98409974807
+##     4    138       7 0.90097821649 0.0243122248699 0.85456529664 0.94991190232
+##     5    123      19 0.76180271963 0.0358408002029 0.69469750752 0.83539004725
+##     6     86      14 0.63778832341 0.0426624384219 0.55942085812 0.72713403438
+##     7     64      16 0.47834124256 0.0470692850775 0.39443795057 0.58009211335
+##     8     34      19 0.21103290113 0.0457204962089 0.13801823681 0.32267391895
+## 
+##                 d$C5_cat=(-0.0458,0.954] 
+##  time n.risk n.event      survival        std.err   lower 95% CI  upper 95% CI
+##     2    197      19 0.90355329949 0.021032333637 0.863256889542 0.94573072618
+##     3    158      28 0.74342992996 0.032448218357 0.682476897005 0.80982676951
+##     4    111      19 0.61617615817 0.037811259080 0.546350628881 0.69492563534
+##     5     71      15 0.48599809658 0.042195778758 0.409949873065 0.57615373342
+##     6     45      14 0.33479868876 0.044383325952 0.258191737481 0.43413535649
+##     7     21      10 0.17537074173 0.043265105317 0.108133477217 0.28441605548
+##     8      6       4 0.05845691391 0.036702258014 0.017076849978 0.20010779437
+## 
+##                 d$C5_cat=(0.954,1.95] 
+##  time n.risk n.event      survival        std.err  lower 95% CI  upper 95% CI
+##     2     35      12 0.65714285714 0.080232897145 0.51728940423 0.83480684344
+##     3     16       2 0.57500000000 0.088772632929 0.42486722707 0.77818428660
+##     4      9       3 0.38333333333 0.108009538494 0.22066762588 0.66590848502
+##     6      3       2 0.12777777778 0.110367579463 0.02350894660 0.69450838319
+## 
+##                 d$C5_cat=(1.95,2.95] 
+##          time        n.risk       n.event      survival       std.err 
+## 2.00000000000 8.00000000000 2.00000000000 0.75000000000 0.15309310892 
+##  lower 95% CI  upper 95% CI 
+## 0.50270184129 1.00000000000</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># Access to the sort summary table</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">summary</span>(fit)<span class="op">$</span>table</a></code></pre></div>
+<pre><code>##                          records n.max n.start events           *rmean
+## d$C5_cat=(-1.05,-0.0458]     158   158     158     83 6.47620374360809
+## d$C5_cat=(-0.0458,0.954]     197   197     197    109 5.17164154382500
+## d$C5_cat=(0.954,1.95]         35    35      35     19 4.19047619047619
+## d$C5_cat=(1.95,2.95]           8     8       8      2 6.12500000000000
+##                                 *se(rmean) median 0.95LCL 0.95UCL
+## d$C5_cat=(-1.05,-0.0458] 0.115374612246253      7       7       8
+## d$C5_cat=(-0.0458,0.954] 0.148411452506903      5       5       6
+## d$C5_cat=(0.954,1.95]    0.409915764437549      4       3      NA
+## d$C5_cat=(1.95,2.95]     0.842012099081717     NA      NA      NA</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="co"># Convert list to data frame</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">data_f &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> fit<span class="op">$</span>time,</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">                     <span class="dt">n.risk =</span> fit<span class="op">$</span>n.risk,</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">                     <span class="dt">n.event =</span> fit<span class="op">$</span>n.event,</a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">                     <span class="dt">n.censor =</span> fit<span class="op">$</span>n.censor,</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6">                     <span class="dt">surv =</span> fit<span class="op">$</span>surv,</a>
+<a class="sourceLine" id="cb52-7" data-line-number="7">                     <span class="dt">upper =</span> fit<span class="op">$</span>upper,</a>
+<a class="sourceLine" id="cb52-8" data-line-number="8">                     <span class="dt">lower =</span> fit<span class="op">$</span>lower</a>
+<a class="sourceLine" id="cb52-9" data-line-number="9">)</a>
+<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="kw">head</span>(data_f)</a></code></pre></div>
+<pre><code>##   time n.risk n.event n.censor              surv             upper
+## 1    2    158       2        1 0.987341772151899 1.000000000000000
+## 2    3    155       6       11 0.949122090649245 0.984099748070158
+## 3    4    138       7        8 0.900978216485877 0.949911902315576
+## 4    5    123      19       18 0.761802719630335 0.835390047251411
+## 5    6     86      14        8 0.637788323411443 0.727134034375200
+## 6    7     64      16       14 0.478341242558583 0.580092113346112
+##               lower
+## 1 0.970063049899415
+## 2 0.915387637000158
+## 3 0.854565296637784
+## 4 0.694697507524315
+## 5 0.559420858122129
+## 6 0.394437950574186</code></pre>
+<p>Here the survival plot for the C5 variable is plotted</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="co"># Change color, linetype by strata, risk.table color by strata</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co">#ggsurvplot(fit,</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="co">#           pval = TRUE, conf.int = TRUE,</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co">#          risk.table = TRUE, # Add risk table</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="co">#           risk.table.col = &quot;strata&quot;, # Change risk table color by groups</span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="co">#           linetype = &quot;strata&quot;, # Change line type by groups</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="co">#           surv.median.line = &quot;hv&quot;, # Specify median survival</span></a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="co">#           ggtheme = theme_bw(), # Change ggplot2 theme</span></a>
+<a class="sourceLine" id="cb54-9" data-line-number="9"><span class="co">#           palette = c(&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;,&quot;yellow&quot;))</span></a></code></pre></div>
+</div>
+<div id="from-continuous-to-categorical-c11" class="section level3">
+<h3><span class="header-section-number">2.5.4</span> From continuous to categorical C11</h3>
+<p>Here an attempt is made to turn C11 into a categoricla variable so that it can be used for a survivla plot.
+A method adapted forbinning skewed distribution would however be needed.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">mi &lt;-<span class="st"> </span><span class="kw">min</span>(d<span class="op">$</span>C11, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">ma &lt;-<span class="st"> </span><span class="kw">max</span>(d<span class="op">$</span>C11, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">d<span class="op">$</span>C11_cat &lt;-<span class="st"> </span><span class="kw">cut</span>(d<span class="op">$</span>C11, <span class="kw">seq</span>(mi,ma,<span class="fl">0.6</span>))</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb55-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="kw">head</span>(d)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 28
+##   Sample_ID Time_point_num   sex     C1     C2      C3     C4    C5       C6
+##       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1       101              2     1 -0.569  0.230 -1.52    0.535 0.611  0.487  
+## 2       104              2     2 -1.60  -0.721 -1.52   -0.292 0.391 -0.00436
+## 3       107              2     1  0.299  0.770 -0.553   1.41  0.876  0.839  
+## 4       110              2     2 -0.387  0.439 -1.52   -0.292 1.68  -0.678  
+## 5       111              2     2  0.143  0.980 -0.0969  1.68  2.29  -0.678  
+## 6       112              2     1  0.316  0.377 -1.52    0.962 1.49  -0.678  
+## # … with 19 more variables: C7 &lt;dbl&gt;, C8 &lt;dbl&gt;, C9 &lt;dbl&gt;, C10 &lt;dbl&gt;, C11 &lt;dbl&gt;,
+## #   C12 &lt;dbl&gt;, C13 &lt;dbl&gt;, C14 &lt;dbl&gt;, C15 &lt;dbl&gt;, C16 &lt;dbl&gt;, C17 &lt;dbl&gt;, G1 &lt;dbl&gt;,
+## #   G2 &lt;dbl&gt;, G3 &lt;dbl&gt;, G4 &lt;dbl&gt;, G5 &lt;dbl&gt;, outcome &lt;dbl&gt;, C5_cat &lt;fct&gt;,
+## #   C11_cat &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">fit &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>d<span class="op">$</span>C11_cat, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">print</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ d$C11_cat, 
+##     data = d)
+## 
+##    211 observations deleted due to missingness 
+##                             n events median 0.95LCL 0.95UCL
+## d$C11_cat=(-0.509,0.0914]  48     23      7       6      NA
+## d$C11_cat=(0.0914,0.691]  136     63      7       6       7
+## d$C11_cat=(0.691,1.29]     65     38      6       5       6
+## d$C11_cat=(1.29,1.89]       4      1      5       5      NA</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co"># Summary of survival curves</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">summary</span>(fit)</a></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(Time_point_num, outcome) ~ d$C11_cat, 
+##     data = d)
+## 
+## 211 observations deleted due to missingness 
+##                 d$C11_cat=(-0.509,0.0914] 
+##  time n.risk n.event      survival        std.err  lower 95% CI  upper 95% CI
+##     2     48       4 0.91666666667 0.039892796157 0.84172000048 0.99828657665
+##     3     43       3 0.85271317829 0.051432994403 0.75763696828 0.95972054543
+##     4     38       3 0.78539371685 0.060295349000 0.67567826724 0.91292456836
+##     5     32       5 0.66267594859 0.071620530194 0.53617338808 0.81902500685
+##     6     22       2 0.60243268054 0.076739274080 0.46933235378 0.77327959953
+##     7     16       3 0.48947655294 0.085692419877 0.34730613624 0.68984469571
+##     8      9       3 0.32631770196 0.095809060464 0.18353638185 0.58017512135
+## 
+##                 d$C11_cat=(0.0914,0.691] 
+##  time n.risk n.event      survival        std.err  lower 95% CI  upper 95% CI
+##     2    136       8 0.94117647059 0.020176304134 0.90245089241 0.98156382385
+##     3    119       5 0.90163124073 0.025946423539 0.85218474033 0.95394678617
+##     4    105       7 0.84152249135 0.032683149847 0.77984207278 0.90808142849
+##     5     85       9 0.75242010991 0.040530157146 0.67703206490 0.83620267215
+##     6     62      16 0.55824717832 0.051503215581 0.46590320973 0.66889410846
+##     7     35      13 0.35089822637 0.055918253673 0.25676501438 0.47954183154
+##     8     13       5 0.21593737008 0.058531267669 0.12694159163 0.36732600559
+## 
+##                 d$C11_cat=(0.691,1.29] 
+##  time n.risk n.event      survival        std.err   lower 95% CI  upper 95% CI
+##     2     65       6 0.90769230769 0.035903070845 0.839982102947 0.98086057138
+##     3     52       6 0.80295857988 0.051244224988 0.708549323434 0.90994721141
+##     4     43       6 0.69091784781 0.061192513016 0.580815308257 0.82189202941
+##     5     35       9 0.51325325837 0.068349883279 0.395345949645 0.66632504383
+##     6     18       7 0.31365476900 0.072268506904 0.199677171399 0.49269184569
+##     7      7       4 0.13442347243 0.066340938601 0.051096180444 0.35364032660
+## 
+##                 d$C11_cat=(1.29,1.89] 
+##          time        n.risk       n.event      survival       std.err 
+## 5.00000000000 2.00000000000 1.00000000000 0.50000000000 0.35355339059 
+##  lower 95% CI  upper 95% CI 
+## 0.12504882663 1.00000000000</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co"># Access to the sort summary table</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">summary</span>(fit)<span class="op">$</span>table</a></code></pre></div>
+<pre><code>##                           records n.max n.start events           *rmean
+## d$C11_cat=(-0.509,0.0914]      48    48      48     23 6.06462046741126
+## d$C11_cat=(0.0914,0.691]      136   136     136     63 6.17044660409091
+## d$C11_cat=(0.691,1.29]         65    65      65     38 5.29568849896731
+## d$C11_cat=(1.29,1.89]           4     4       4      1 6.25000000000000
+##                                  *se(rmean) median 0.95LCL 0.95UCL
+## d$C11_cat=(-0.509,0.0914] 0.278883049948754      7       6      NA
+## d$C11_cat=(0.0914,0.691]  0.148790708743209      7       6       7
+## d$C11_cat=(0.691,1.29]    0.233810537719187      6       5       6
+## d$C11_cat=(1.29,1.89]     0.883883476483184      5       5      NA</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co"># Convert list to data frame</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">data_f &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> fit<span class="op">$</span>time,</a>
+<a class="sourceLine" id="cb63-3" data-line-number="3">                     <span class="dt">n.risk =</span> fit<span class="op">$</span>n.risk,</a>
+<a class="sourceLine" id="cb63-4" data-line-number="4">                     <span class="dt">n.event =</span> fit<span class="op">$</span>n.event,</a>
+<a class="sourceLine" id="cb63-5" data-line-number="5">                     <span class="dt">n.censor =</span> fit<span class="op">$</span>n.censor,</a>
+<a class="sourceLine" id="cb63-6" data-line-number="6">                     <span class="dt">surv =</span> fit<span class="op">$</span>surv,</a>
+<a class="sourceLine" id="cb63-7" data-line-number="7">                     <span class="dt">upper =</span> fit<span class="op">$</span>upper,</a>
+<a class="sourceLine" id="cb63-8" data-line-number="8">                     <span class="dt">lower =</span> fit<span class="op">$</span>lower</a>
+<a class="sourceLine" id="cb63-9" data-line-number="9">)</a>
+<a class="sourceLine" id="cb63-10" data-line-number="10"><span class="kw">head</span>(data_f)</a></code></pre></div>
+<pre><code>##   time n.risk n.event n.censor              surv             upper
+## 1    2     48       4        1 0.916666666666667 0.998286576645671
+## 2    3     43       3        2 0.852713178294574 0.959720545427474
+## 3    4     38       3        3 0.785393716850265 0.912924568361474
+## 4    5     32       5        5 0.662675948592411 0.819025006853234
+## 5    6     22       2        4 0.602432680538556 0.773279599531713
+## 6    7     16       3        4 0.489476552937576 0.689844695710995
+##               lower
+## 1 0.841720000484413
+## 2 0.757636968283682
+## 3 0.675678267236242
+## 4 0.536173388075249
+## 5 0.469332353783356
+## 6 0.347306136243780</code></pre>
+<p>Here the survival plot for the C11 variable is plotted</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co"># Change color, linetype by strata, risk.table color by strata</span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="co">#ggsurvplot(fit,</span></a>
+<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="co">#           pval = TRUE, conf.int = TRUE,</span></a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="co">#           risk.table = TRUE, # Add risk table</span></a>
+<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="co">#           risk.table.col = &quot;strata&quot;, # Change risk table color by groups</span></a>
+<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="co">#           linetype = &quot;strata&quot;, # Change line type by groups</span></a>
+<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="co">#           surv.median.line = &quot;hv&quot;, # Specify median survival</span></a>
+<a class="sourceLine" id="cb65-8" data-line-number="8"><span class="co">#           ggtheme = theme_bw(), # Change ggplot2 theme</span></a>
+<a class="sourceLine" id="cb65-9" data-line-number="9"><span class="co">#           palette = c(&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;,&quot;yellow&quot;))</span></a></code></pre></div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="general-description-explorative-analysis-of-the-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discussion-comments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>

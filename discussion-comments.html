@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Discussion, comments | Analysis of binary outcome and continuos explanatory variables measured at timepoints</title>
+  <meta name="description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Discussion, comments | Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Discussion, comments | Analysis of binary outcome and continuos explanatory variables measured at timepoints" />
+  
+  <meta name="twitter:description" content="In total the data encompasses 22 continuos explanatory time dependant variables, an one 1 binary time independent variable, sex, and one binary outcome variable." />
+  
+
+<meta name="author" content="Halfdan Rydbeck" />
+
+
+<meta name="date" content="2020-01-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-analysis.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html"><i class="fa fa-check"></i><b>1</b> General description (explorative analysis) of the data</a><ul>
+<li class="chapter" data-level="1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#initial-remarks"><i class="fa fa-check"></i><b>1.1</b> Initial remarks</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#some-reflections"><i class="fa fa-check"></i><b>1.1.1</b> Some reflections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-variationdistributions-of-variables"><i class="fa fa-check"></i><b>1.2</b> Plots of variation/distributions of variables</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#gather-data"><i class="fa fa-check"></i><b>1.2.1</b> “Gather” data</a></li>
+<li class="chapter" data-level="1.2.2" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#all-data-included"><i class="fa fa-check"></i><b>1.2.2</b> All data included</a></li>
+<li class="chapter" data-level="1.2.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#removing-most-common-value-from-cytokine-and-growth-factor-variables"><i class="fa fa-check"></i><b>1.2.3</b> Removing most common value from cytokine and growth factor variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#most-common-value-removed"><i class="fa fa-check"></i><b>1.2.4</b> Most common value removed</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="general-description-explorative-analysis-of-the-data.html"><a href="general-description-explorative-analysis-of-the-data.html#plots-of-covariation-of-variables."><i class="fa fa-check"></i><b>1.3</b> Plots of covariation of variables.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>2</b> Data analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis.html"><a href="data-analysis.html#cox-proportional-hazards-regression"><i class="fa fa-check"></i><b>2.1</b> Cox proportional hazards regression</a></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis.html"><a href="data-analysis.html#univariate-cox-regression-with-single-variable"><i class="fa fa-check"></i><b>2.2</b> Univariate Cox regression with single variable</a></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis.html"><a href="data-analysis.html#applying-the-univariate-coxph-function-for-each-variable"><i class="fa fa-check"></i><b>2.3</b> Applying the univariate coxph function for each variable</a></li>
+<li class="chapter" data-level="2.4" data-path="data-analysis.html"><a href="data-analysis.html#multivariate-cox-regression"><i class="fa fa-check"></i><b>2.4</b> Multivariate Cox regression</a></li>
+<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-resulst-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic resulst visually</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="data-analysis.html"><a href="data-analysis.html#compute-survival-curves-survfit"><i class="fa fa-check"></i><b>2.5.1</b> Compute survival curves: survfit()</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-analysis.html"><a href="data-analysis.html#produce-the-survival-curves"><i class="fa fa-check"></i><b>2.5.2</b> Produce the survival curves</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c5"><i class="fa fa-check"></i><b>2.5.3</b> From continuous to categorical C5</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c11"><i class="fa fa-check"></i><b>2.5.4</b> From continuous to categorical C11</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="discussion-comments.html"><a href="discussion-comments.html"><i class="fa fa-check"></i><b>3</b> Discussion, comments</a><ul>
+<li class="chapter" data-level="3.1" data-path="discussion-comments.html"><a href="discussion-comments.html#assumption"><i class="fa fa-check"></i><b>3.1</b> Assumption</a></li>
+<li class="chapter" data-level="3.2" data-path="discussion-comments.html"><a href="discussion-comments.html#more-data-munging-required"><i class="fa fa-check"></i><b>3.2</b> More data munging required</a></li>
+<li class="chapter" data-level="3.3" data-path="discussion-comments.html"><a href="discussion-comments.html#other-approaches"><i class="fa fa-check"></i><b>3.3</b> Other approaches</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of binary outcome and continuos explanatory variables measured at timepoints</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="discussion-comments" class="section level1">
+<h1><span class="header-section-number">3</span> Discussion, comments</h1>
+<div id="assumption" class="section level2">
+<h2><span class="header-section-number">3.1</span> Assumption</h2>
+<p>I assume in the analysis that the time variable, given as letters in the data, could be replaced by actual numerical time points like weeks since birth. I have replaced a-h with 1-8 for that reason. If the time points should be seen as non ordered categorical data, then another type of analysis would be needed.</p>
+</div>
+<div id="more-data-munging-required" class="section level2">
+<h2><span class="header-section-number">3.2</span> More data munging required</h2>
+<p>I think many consideration has to be made regarding on to go forward with this data. I am not convinced cox-regressson is the right way to go given that the Time variable is given as letters and not oredered numbers. Should the very frequent values for the cytokines be removed from the analysis? Should values be imputed for the missing values? Should the measurements be normalised against each other?</p>
+</div>
+<div id="other-approaches" class="section level2">
+<h2><span class="header-section-number">3.3</span> Other approaches</h2>
+<ol style="list-style-type: decimal">
+<li>Alternatives could be binary logistic regression, generalized linear mixed-effects models, weighted generalized estimating equations (<a href="https://rdrr.io/cran/wgeesel/man/wgee.html" class="uri">https://rdrr.io/cran/wgeesel/man/wgee.html</a>)</li>
+<li>There are machine learning approaches to this analysis as well.</li>
+</ol>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>
