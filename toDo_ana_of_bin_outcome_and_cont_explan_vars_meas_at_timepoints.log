@@ -1,0 +1,13 @@
+
+* Make table1 smaller so that it fits page
+Make table1 not interupt numbered list
+* Fix filtering of growht factors (have to use different binwidth for each plot). (Turned out)
+Use original data file and convert chars to number in file and figur out how to deal with points s decimals programmatically
+Fix so that more of page is used for printing. Do not adjust for printing
+How can I spell check R markdown? (ABC button)
+Use a for loop to remove most common value
+Use a method adapted for binning skewed distribution to convert to categorical
+What is the ost efficianet way to work with knit?
+Put "About this report somewhere else"
+Fix so that github repo is clean of all old files
+Make presentation as alternative to pdf or html

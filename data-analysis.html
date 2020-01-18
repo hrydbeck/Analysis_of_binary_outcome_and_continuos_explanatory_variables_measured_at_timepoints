@@ -24,7 +24,7 @@
 <meta name="author" content="Halfdan Rydbeck" />
 
 
-<meta name="date" content="2020-01-12" />
+<meta name="date" content="2020-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="data-analysis.html"><a href="data-analysis.html#univariate-cox-regression-with-single-variable"><i class="fa fa-check"></i><b>2.2</b> Univariate Cox regression with single variable</a></li>
 <li class="chapter" data-level="2.3" data-path="data-analysis.html"><a href="data-analysis.html#applying-the-univariate-coxph-function-for-each-variable"><i class="fa fa-check"></i><b>2.3</b> Applying the univariate coxph function for each variable</a></li>
 <li class="chapter" data-level="2.4" data-path="data-analysis.html"><a href="data-analysis.html#multivariate-cox-regression"><i class="fa fa-check"></i><b>2.4</b> Multivariate Cox regression</a></li>
-<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-resulst-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic resulst visually</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-results-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic results visually</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="data-analysis.html"><a href="data-analysis.html#compute-survival-curves-survfit"><i class="fa fa-check"></i><b>2.5.1</b> Compute survival curves: survfit()</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-analysis.html"><a href="data-analysis.html#produce-the-survival-curves"><i class="fa fa-check"></i><b>2.5.2</b> Produce the survival curves</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c5"><i class="fa fa-check"></i><b>2.5.3</b> From continuous to categorical C5</a></li>
@@ -187,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="univariate-cox-regression-with-single-variable" class="section level2">
 <h2><span class="header-section-number">2.2</span> Univariate Cox regression with single variable</h2>
-<p>An initial look at the effect of the sex variable</p>
+<p>This code was adapted from <span class="citation">(“Easy guides R Software,” <a href="#ref-R">n.d.</a>)</span>
+An initial look at the effect of the sex variable</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">res.cox &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(Time_point_num, outcome) <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> d)</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2">res.cox</a></code></pre></div>
 <pre><code>## Call:
@@ -347,8 +348,8 @@ According to this multivariate cox analysis C5, G1 and G2 has significant effect
 ## Wald test            = 179.93  on 13 df,   p=&lt; 2.22045e-16
 ## Score (logrank) test = 196.36  on 13 df,   p=&lt; 2.22045e-16</code></pre>
 </div>
-<div id="verifying-the-analytic-resulst-visually" class="section level2">
-<h2><span class="header-section-number">2.5</span> Verifying the analytic resulst visually</h2>
+<div id="verifying-the-analytic-results-visually" class="section level2">
+<h2><span class="header-section-number">2.5</span> Verifying the analytic results visually</h2>
 <p>It would be great to be able to display visual proofs/indications that the above performes multivariate cox regression is according to expectations. It would for instance be great if one could crete survival plots for C5 that is found significant an for another variable that is not found significant. That is what I attempt in the following sections.</p>
 <div id="compute-survival-curves-survfit" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Compute survival curves: survfit()</h3>
@@ -662,6 +663,12 @@ A method adapted forbinning skewed distribution would however be needed.</p>
 <a class="sourceLine" id="cb65-8" data-line-number="8"><span class="co">#           ggtheme = theme_bw(), # Change ggplot2 theme</span></a>
 <a class="sourceLine" id="cb65-9" data-line-number="9"><span class="co">#           palette = c(&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;,&quot;yellow&quot;))</span></a></code></pre></div>
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R">
+<p>“Easy guides R Software.” n.d. <a href="http://www.sthda.com/english/wiki/cox-proportional-hazards-model#.XhrW5-5a0qo.gmail">http://www.sthda.com/english/wiki/cox-proportional-hazards-model#.XhrW5-5a0qo.gmail</a>.</p>
 </div>
 </div>
             </section>

@@ -24,7 +24,7 @@
 <meta name="author" content="Halfdan Rydbeck" />
 
 
-<meta name="date" content="2020-01-12" />
+<meta name="date" content="2020-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="data-analysis.html"><a href="data-analysis.html#univariate-cox-regression-with-single-variable"><i class="fa fa-check"></i><b>2.2</b> Univariate Cox regression with single variable</a></li>
 <li class="chapter" data-level="2.3" data-path="data-analysis.html"><a href="data-analysis.html#applying-the-univariate-coxph-function-for-each-variable"><i class="fa fa-check"></i><b>2.3</b> Applying the univariate coxph function for each variable</a></li>
 <li class="chapter" data-level="2.4" data-path="data-analysis.html"><a href="data-analysis.html#multivariate-cox-regression"><i class="fa fa-check"></i><b>2.4</b> Multivariate Cox regression</a></li>
-<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-resulst-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic resulst visually</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-analysis.html"><a href="data-analysis.html#verifying-the-analytic-results-visually"><i class="fa fa-check"></i><b>2.5</b> Verifying the analytic results visually</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="data-analysis.html"><a href="data-analysis.html#compute-survival-curves-survfit"><i class="fa fa-check"></i><b>2.5.1</b> Compute survival curves: survfit()</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-analysis.html"><a href="data-analysis.html#produce-the-survival-curves"><i class="fa fa-check"></i><b>2.5.2</b> Produce the survival curves</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-analysis.html"><a href="data-analysis.html#from-continuous-to-categorical-c5"><i class="fa fa-check"></i><b>2.5.3</b> From continuous to categorical C5</a></li>
@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Analysis of binary outcome and continuos explanatory variables measured at timepoints</h1>
 <p class="author"><em>Halfdan Rydbeck</em></p>
-<p class="date"><em>2020-01-12</em></p>
+<p class="date"><em>2020-01-13</em></p>
 </div>
 <div id="general-description-explorative-analysis-of-the-data" class="section level1">
 <h1><span class="header-section-number">1</span> General description (explorative analysis) of the data</h1>
@@ -362,8 +362,7 @@ Figure 1.3: Plotting histogram of C3 with most common value removed
 ##  Max.   :2426.280000000   Max.   :1.000000000000  
 ##  NA&#39;s   :61               NA&#39;s   :31</code></pre>
 <p>Omitting missing values</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">d &lt;-<span class="st"> </span><span class="kw">na.omit</span>(d)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#summary(d)</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">d &lt;-<span class="st"> </span><span class="kw">na.omit</span>(d)</a></code></pre></div>
 <div id="some-reflections" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Some reflections</h3>
 <ol style="list-style-type: decimal">
@@ -383,7 +382,7 @@ Figure 1.3: Plotting histogram of C3 with most common value removed
 <div id="all-data-included" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> All data included</h3>
 Plot the distrubution of the measurements of cytokines (C1-C17) and of growth factors. It can be seen that one specific low value is over represented.
-<code>{r fig3, echo=FALSE, fig.cap=&quot;All data included ck&quot;}#r All data included ck ggplot(data = d_long) +   geom_histogram(mapping = aes(x = ck_value),binwidth = 0.05) +   facet_wrap( ~ ck)</code>
+<code>{r fig3, echo=FALSE, fig.cap=&quot;All data included ck&quot;} #r All data included ck ggplot(data = d_long) +   geom_histogram(mapping = aes(x = ck_value),binwidth = 0.05) +   facet_wrap( ~ ck)</code>
 Plot the distrubution of the measurements of growth factors
 <div class="figure"><span id="fig:fig4"></span>
 <img src="Analysis_of_binary_outcome_and_continuos_explanatory_variables_measured_at_timepoints_files/figure-html/fig4-1.png" alt="Histograms of growth facors. All data included gf" width="672" />
@@ -486,7 +485,7 @@ Plot the distrubution of the measurements of growth factors (G1-G5). The filteri
 </div>
 <div id="plots-of-covariation-of-variables." class="section level2">
 <h2><span class="header-section-number">1.3</span> Plots of covariation of variables.</h2>
-<p>These plots indicate correlation betwwen varialbes. The dot plot cloud is streched out from lower left to upper right. The cloud is not symmetric.</p>
+<p>These plots indicate correlation betwen varialbes. The dot plot cloud is streched out from lower left to upper right. The cloud is not symmetric.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d, <span class="st">&quot;ck_low&quot;</span>, <span class="st">&quot;ck_low_val&quot;</span>,<span class="kw">c</span>(C2<span class="op">:</span>C13))</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d_long2, <span class="st">&quot;ck_high&quot;</span>, <span class="st">&quot;ck_high_val&quot;</span>,<span class="kw">c</span>(C14<span class="op">:</span>C17))</a>
 <a class="sourceLine" id="cb17-3" data-line-number="3">d_long2 &lt;-<span class="st"> </span><span class="kw">gather</span>(d_long2, <span class="st">&quot;gf&quot;</span>, <span class="st">&quot;gf_val&quot;</span>,<span class="kw">c</span>(G3<span class="op">:</span>G5))</a></code></pre></div>
